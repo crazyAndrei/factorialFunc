@@ -8,7 +8,13 @@ const factorial = (n) => {
     return n === 1 ? 1 : n * factorial(n - 1);
 };
 
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.path}`);
+    next();
+});
+
 app.get('/', (req, res) => {
+    console.log("Root route accessed");
     res.writeHead(200, {'Content-Type': 'text/plain'});
     // Write some text to the response
     res.end('Welcome to my simple Node.js app!');
