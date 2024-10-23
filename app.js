@@ -8,6 +8,12 @@ const factorial = (n) => {
     return n === 1 ? 1 : n * factorial(n - 1);
 };
 
+app.get('/', (req, res) => {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    // Write some text to the response
+    res.end('Welcome to my simple Node.js app!');
+});
+
 app.post('/calculateFactorial', (req, res) => {
     const { input } = req.body;
     if (typeof input !== 'number' || input < 0) {
